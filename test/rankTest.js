@@ -93,3 +93,13 @@ rankTest('rank case 7:voyage length 10 and history has a zone', t => {
   t.is(result, 'B')
 });
 
+rankTest('rank case 8:voyage length 10 and history without zone', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 10,
+  };
+  const history = [];
+  const result = rating(voyage, history);
+  t.is(result, 'B')
+});
+
