@@ -1,11 +1,5 @@
 function printOwing(invoice) {
-  
-  
-
-  
-
   return generateOwing(invoice);
-
 }
 
 module.exports = {
