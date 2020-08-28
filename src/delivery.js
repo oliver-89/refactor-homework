@@ -8,28 +8,29 @@ function deliveryDate(anOrder, isRush) {
 
 const deliveryTimeHandle = [
   (anOrder, isRush, deliveryTime) => {
-      return isRush ? 3 : deliveryTime;
+    return isRush ? 3 : deliveryTime;
+  },
+
+  (anOrder, isRush, deliveryTime) => {
+    return (isRush && ['MA', 'CT'].includes(anOrder.deliveryState)) ? 1 : deliveryTime;
   },
   (anOrder, isRush, deliveryTime) => {
-      return (isRush && ['MA', 'CT'].includes(anOrder.deliveryState)) ? 1 : deliveryTime;
+    return (isRush && ['NY', 'NH'].includes(anOrder.deliveryState)) ? 2 : deliveryTime;
   },
   (anOrder, isRush, deliveryTime) => {
-      return (isRush && ['NY', 'NH'].includes(anOrder.deliveryState)) ? 2 : deliveryTime;
+    return (isRush) ? anOrder.placedOn.plusDays(1 + deliveryTime) : deliveryTime;
   },
   (anOrder, isRush, deliveryTime) => {
-      return (isRush) ? anOrder.placedOn.plusDays(1 + deliveryTime) : deliveryTime;
+    return (!isRush) ? 4 : deliveryTime;
   },
   (anOrder, isRush, deliveryTime) => {
-      return (!isRush) ? 4 : deliveryTime;
+    return (!isRush && ['MA', 'CT', 'NY',].includes(anOrder.deliveryState)) ? 2 : deliveryTime;
   },
   (anOrder, isRush, deliveryTime) => {
-      return (!isRush && ['MA', 'CT', 'NY',].includes(anOrder.deliveryState)) ? 2 : deliveryTime;
+    return (!isRush && ['ME', 'NH',].includes(anOrder.deliveryState)) ? 3 : deliveryTime;
   },
   (anOrder, isRush, deliveryTime) => {
-      return (!isRush && ['ME', 'NH',].includes(anOrder.deliveryState)) ? 3 : deliveryTime;
-  },
-  (anOrder, isRush, deliveryTime) => {
-      return (!isRush) ? anOrder.placedOn.plusDays(2 + deliveryTime) : deliveryTime;
+    return (!isRush) ? anOrder.placedOn.plusDays(2 + deliveryTime) : deliveryTime;
 
   },
 ]

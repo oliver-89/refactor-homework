@@ -22,7 +22,7 @@ test('printOwing case 1. Customer Oliver with amount 1 and 2. ', t => {
         '***********************\n' +
         'name: Oliver\n' +
         'amount: 3\n' +
-        'amount: '+new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30).toLocaleDateString());
+        'amount: ' + new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30).toLocaleDateString());
 });
 
 
@@ -41,7 +41,7 @@ test('printOwing case 2. Customer Oliver without amount. ', t => {
         '***********************\n' +
         'name: Oliver\n' +
         'amount: 0\n' +
-        'amount: '+new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30).toLocaleDateString());
+        'amount: ' + new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30).toLocaleDateString());
 });
 
 
