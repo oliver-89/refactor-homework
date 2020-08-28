@@ -1,5 +1,5 @@
 const rankTest = require('ava');
-const {voyageRisk, hasChina, captainHistoryRisk, voyageProfitFactor, rating} = require('../src/rank');
+const { voyageRisk, hasChina, captainHistoryRisk, voyageProfitFactor, rating } = require('../src/rank');
 
 const voyage = {
   zone: 'west-indies',
@@ -10,10 +10,10 @@ const history = [
   {
     zone: 'east-indies',
     profit: 5,
-  },{
+  }, {
     zone: 'west-indies',
     profit: 15,
-  },{
+  }, {
     zone: 'china',
     profit: -2,
   },
@@ -32,22 +32,22 @@ rankTest('bar', async t => {
   t.is(await bar, 'bar');
 });
 
-rankTest('rank case 1,voyage length 7 and zone china', t=>{
+rankTest('rank case 1,voyage length 7 and zone china', t => {
   const voyage = {
-      zone: 'china',
-      length: 7,
+    zone: 'china',
+    length: 7,
   };
   let result = voyageRisk(voyage);
-  t.is(result,7)
+  t.is(result, 7)
 })
 
-rankTest('rank case 2,voyage length 9 and zone china', t=>{
+rankTest('rank case 2,voyage length 9 and zone china', t => {
   const voyage = {
-      zone: 'china',
-      length: 9,
+    zone: 'china',
+    length: 9,
   };
   let result = voyageRisk(voyage);
-  t.is(result,8)
+  t.is(result, 8)
 })
 
 rankTest('rank case 3, history with china', t => {
@@ -55,8 +55,26 @@ rankTest('rank case 3, history with china', t => {
   t.is(result, true)
 })
 
-rankTest('rank case 4, captainHistoryRisk with voyage and history', t=>{
+rankTest('rank case 4, captainHistoryRisk with voyage and history', t => {
   let result = captainHistoryRisk(voyage, history);
-  t.is(result,6)
+  t.is(result, 6)
+})
+
+rankTest('rank case 5,voyageProfitFactor with voyage(zone china length 7) and history', t => {
+  const voyage = {
+    zone: 'china',
+    length: 7,
+  };
+  let result = voyageProfitFactor(voyage, history);
+  t.is(6, result)
+})
+
+rankTest('rank case 6,voyageProfitFactor with voyage(zone china length 13) and history', t => {
+  const voyage = {
+    zone: 'china',
+    length: 13,
+  };
+  let result = voyageProfitFactor(voyage, history);
+  t.is(7, result)
 })
 
