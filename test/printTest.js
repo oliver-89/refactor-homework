@@ -2,7 +2,6 @@ const test = require('ava');
 const { printOwing } = require('../src/print');
 
 
-
 test('printOwing case 1. Customer Oliver with amount 1 and 2. ', t => {
 
     let invoice = {
@@ -42,6 +41,7 @@ test('printOwing case 2. Customer Oliver without amount. ', t => {
         'amount: 0\n' +
         'amount: 9/27/2020');
 });
+
 
 
 
