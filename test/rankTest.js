@@ -78,3 +78,18 @@ rankTest('rank case 6,voyageProfitFactor with voyage(zone china length 13) and h
   t.is(7, result)
 })
 
+rankTest('rank case 7:voyage length 10 and history has a zone', t => {
+  const voyage = {
+    zone: 'west-indies',
+    length: 10,
+  };
+  const history = [
+    {
+      zone: 'west-indies',
+      profit: 15,
+    }
+  ];
+  const result = rating(voyage, history);
+  t.is(result, 'B')
+});
+
