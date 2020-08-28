@@ -19,3 +19,12 @@ rankTest('rank case 1,voyage length 7 and zone china', t=>{
   t.is(result,7)
 })
 
+rankTest('rank case 2,voyage length 9 and zone china', t=>{
+  const voyage = {
+      zone: 'china',
+      length: 9,
+  };
+  let result = voyageRisk(voyage);
+  t.is(result,8)
+})
+
