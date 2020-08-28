@@ -1,6 +1,11 @@
 const rankTest = require('ava');
 const {voyageRisk, hasChina, captainHistoryRisk, voyageProfitFactor, rating} = require('../src/rank');
 
+const voyage = {
+  zone: 'west-indies',
+  length: 10,
+};
+
 const history = [
   {
     zone: 'east-indies',
@@ -48,5 +53,10 @@ rankTest('rank case 2,voyage length 9 and zone china', t=>{
 rankTest('rank case 3, history with china', t => {
   let result = hasChina(history);
   t.is(result, true)
+})
+
+rankTest('rank case 4, captainHistoryRisk with voyage and history', t=>{
+  let result = captainHistoryRisk(voyage, history);
+  t.is(result,6)
 })
 
