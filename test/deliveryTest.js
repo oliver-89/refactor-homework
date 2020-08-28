@@ -24,3 +24,15 @@ test('Delivery case 2, is rush true and NY',t=>{
     let result = deliveryDate(anOrder,isRush);
     t.is(result,4)
 })
+
+test('Delivery case 3, is rush true and NYY',t=>{
+    let anOrder = {
+        deliveryState:'NYY',
+        placedOn: {
+            plusDays:(num)=>{return num+1}
+        }
+    }
+    let isRush = true;
+    let result = deliveryDate(anOrder,isRush);
+    t.is(result,5)
+})
