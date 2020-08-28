@@ -60,3 +60,15 @@ test('Delivery case 5, is rush false and ME',t=>{
     let result = deliveryDate(anOrder,isRush);
     t.is(result,6)
 })
+
+test('Delivery case 6, is rush false and MEE',t=>{
+    let anOrder = {
+        deliveryState:'MEE',
+        placedOn: {
+            plusDays:(num)=>{return num+1}
+        }
+    }
+    let isRush = false;
+    let result = deliveryDate(anOrder,isRush);
+    t.is(result,7)
+})
